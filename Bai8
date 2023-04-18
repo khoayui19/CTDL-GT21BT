@@ -1,0 +1,95 @@
+# include<iostream>
+using namespace std;
+ 
+class stack_data
+{
+    public:
+    int top;
+    int data[6];  
+    stack_data()
+    {
+        top = -1;
+    }
+ 
+    void push (int a);
+    int pop ();
+    void isEmpty();
+    void isFull();
+    void display();
+};
+ 
+void stack_data::push (int a)
+{
+    if(top >= 6)
+    {
+        cout << "Overflow\n";
+    }
+    else
+    {
+        data[++top] = a;   
+    }
+}
+ 
+int stack_data::pop ()
+{
+    if(top < 0)
+    {
+        cout << "Underflow\n";
+        return 0;
+    }
+    else
+    {
+        int pop = data[top--];
+        return pop;
+    }
+}
+ 
+void stack_data::isEmpty()
+{
+    if(top < 0)
+    {
+        cout << "Stack Underflow\n";
+    }
+    else
+    {
+        cout << "Stack can occupy elements.\n";
+    }
+}
+ 
+void stack_data::isFull()
+{
+    if(top >= 6)
+    {
+        cout << "Overflow\n";
+    }
+    else
+    {
+        cout << "Stack is not full.\n";
+    }
+}
+ 
+void stack_data::display()
+{
+    for(int i=0;i<6;i++)
+    {
+        cout<<data[i]<<endl;
+    }
+}
+ 
+int main() {
+ 
+    stack_data obj;
+    obj.isFull();
+    obj.push (41);
+    obj.push (23);
+    obj.push (4);
+    obj.push (14);
+    obj.push (56);
+    obj.push (1); 
+    cout<<"Stack after insertion of elements:\n";
+    obj.display();
+   
+    cout<<"Element popped from the stack:\n";
+    cout<<obj.pop ()<<endl;
+         
+}
